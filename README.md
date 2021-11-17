@@ -1,5 +1,5 @@
 # Fighting game in the terminal in Java
-🛒 - Exercise to learn how to make a fighting game in the terminal
+☕️ - Exercise to learn how to make a fighting game in the terminal
 
 ## Where are the most important files located?
 

@@ -4,25 +4,50 @@ class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("1 : Menu");
-        System.out.println("2 : Jouer");
-        System.out.println("3 : Option");
-        System.out.println("4 : Quitter");
-        Scanner sc = new Scanner(System.in);
-        String jouer = sc.nextLine();
-        int menu = sc.nextInt();
-        System.out.println(""+" " +jouer+" "+" "+" "+ menu);
+        System.out.print("\033[H\033[2J");
+        System.out.println("Chargement...");
 
-        Player player1 = new Player("Guerrier1", 20.0, 300.0);
-        System.out.println ("name :"+player1.getName());
-        player1.setAttack(30);
-        System.out.println ("vie: "+player1.getHealth()) ;
+        // Initialize
+        Scanner scanner = new Scanner(System.in);
 
-        Player player2 = new Player ("Guerrier2", 30., 150.0);
-        player2.setName("Guerrier2");
-        player2.damage(player1.getAttack());
-        System.out.println("puissance d'attaque:"+player2.getAttack());
+        // Clear console output
+        System.out.print("\033[H\033[2J");
 
-        System.out.println (player1.getAttack());
+        String[] titleArray = {"  _______                  _             _    _____                _           _   ", "|__   __|                (_)           | |  / ____|              | |         | |  ", "   | | ___ _ __ _ __ ___  _ _ __   __ _| | | |     ___  _ __ ___ | |__   __ _| |_ ", "   | |/ _ \\ '__| '_ ` _ \\| | '_ \\ / _` | | | |    / _ \\| '_ ` _ \\| '_ \\ / _` | __|", "   | |  __/ |  | | | | | | | | | | | (_| | | | |___| (_) | | | | | | |_) | (_| | | ", "   |_|\\___|_|  |_| |_| |_|_|_| |_|\\__,_|_|  \\_____\\___/|_| |_| |_|_.__/ \\__,_|\\_, | ", ""};
+
+        for (String title : titleArray) {
+            System.out.println(title);
+        }
+
+        String[] menuArray = {"Jouer", "Option", "Quitter"};
+
+        for(int i=0; i<menuArray.length; i++){
+            System.out.println((i + 1) + ": " + menuArray[i]);
+        }
+
+        System.out.print("> ");
+
+        switch (scanner.nextInt()) {
+            case 1:
+                System.out.println("\n");
+                Play play = new Play();
+                play.main(); 
+                break;
+            case 2:
+                System.out.println("\n");
+                Options options = new Options();
+                options.main(); 
+                break;
+            case 3:
+                System.out.print("\033[H\033[2J");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("\n");
+                System.out.println("Erreur");
+                break;
+        }
+
+    //     
     }
 }

@@ -1,12 +1,15 @@
 class Player {
-    private String name = "Guerrier1";
+    private String name;
     private double health;
     private double attack;
+    private double initiative;
 
-    public Player(String name, double attack, double health) {
+
+    public Player(String name, double attack, double health, double initiative) {
         this.name = name;
         this.attack = attack;
         this.health = health;
+        this.initiative = initiative;
     }
 
     public String getName() {
@@ -37,8 +40,11 @@ class Player {
                this.attack = attack;
     }
 
+    public double getInitiative() {
+        return initiative;
+    }
 
-
-
-
+    public void setInitiative(double initiative) {
+        this.initiative = initiative;
+    }
 }

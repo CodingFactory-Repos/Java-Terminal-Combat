@@ -23,11 +23,12 @@ public class Characters extends GlobalFunctions {
         showTitle("MesCaracteres");
 
         System.out.println("Voici la liste de tous les personnages :");
+        System.out.println("0: Retour");
         for (int i = 0; i < listJson().size(); i++) {
             if (i == 0) {
-                System.out.print(i + ": " + listJson().get(i));
+                System.out.print((i + 1) + ": " + listJson().get(i));
             } else {
-                System.out.print(" - " + i + ": " + listJson().get(i));
+                System.out.print(" - " + (i + 1) + ": " + listJson().get(i));
             }
         }
 
@@ -37,10 +38,14 @@ public class Characters extends GlobalFunctions {
 
         int choice = scanner.nextInt();
 
-        if (choice < listJson().size()) {
-            characterSelected((String) listJson().get(choice));
+        if(choice == 0) {
+            showMenu();
         } else {
-            System.out.println("Vous avez sélectionné un personnage inexistant");
+            if ((choice - 1) < listJson().size()) {
+                characterSelected((String) listJson().get(choice - 1));
+            } else {
+                System.out.println("Vous avez sélectionné un personnage inexistant");
+            }
         }
     }
 
@@ -94,7 +99,7 @@ public class Characters extends GlobalFunctions {
         showTitle("Supprimer" + name);
 
         System.out.println("Vous allez supprimer " + name);
-        System.out.println("Etes-vous sûr de vouloir continuer ?");
+        System.out.println("Êtes-vous sûr de vouloir continuer ?");
         System.out.println("1: Oui");
         System.out.println("2: Non");
         System.out.print("> ");

@@ -14,7 +14,7 @@ class Warrior {
     }
 
     public void damage_receive(int nbDamage){
-        this.setHealth(this.getHealth() - nbDamage/getShield());
+        this.setHealth(this.getHealth() - (nbDamage - getShield()));
     }
 
     public String getName() {
@@ -55,5 +55,3 @@ class Warrior {
 
 
 }
-
-

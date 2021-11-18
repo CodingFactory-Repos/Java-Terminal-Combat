@@ -1,18 +1,16 @@
-class Warrior {
+class Thief {
     private String name;
     private double health;
     private double attack;
-    private double shield;
+    private double critical;
+    private double dodge;
 
-    public Warrior(String name, double attack, double health, double shield) {
+    public Thief(String name, double attack, double health) {
         this.name = name;
         this.attack = attack;
         this.health = health;
-        this.shield = shield;
-    }
-
-    public void damage_receive(int nbDamage){
-        this.setHealth(this.getHealth() - (nbDamage - getShield()));
+        this.critical = critical;
+        this.dodge = dodge;
     }
 
     public String getName() {
@@ -24,7 +22,7 @@ class Warrior {
     }
 
     public void setName(String name){
-        this.name = name;
+        this.name =name;
     }
 
     public double getHealth(){
@@ -43,13 +41,21 @@ class Warrior {
         this.attack = attack;
     }
 
-    public double getShield() {
-        return shield;
+    public double getCritical() {
+        return critical;
     }
 
-    public void setShield(double shield) {
-        this.shield = shield;
+    public void setCritical(double critical) {
+        this.critical = critical;
     }
 
+    public double getDodge() {
+        return dodge;
+    }
 
+    public void setDodge(double dodge) {
+        this.dodge = dodge;
+    }
 }
+
+

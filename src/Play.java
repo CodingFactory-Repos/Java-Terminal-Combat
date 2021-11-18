@@ -9,8 +9,8 @@ public class Play extends GlobalFunctions {
         showTitle("Play");
 
         // Initialize
-        Warrior player1 = new Warrior("Axel ", 120, 300.0, 1, 20);
-        Wizard player2 = new Wizard("Louis", 35 , 100, 4);
+        Player player1 = new Player("Axel ", 120, 300.0, 9);
+        Player player2 = new Player("Louis", 35 , 100, 4);
 
         double playerTurns;
 

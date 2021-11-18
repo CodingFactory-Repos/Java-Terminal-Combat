@@ -38,11 +38,21 @@ public class GlobalFunctions {
         }
     }
 
-    public static boolean createJson(String name) {
+    public static boolean createJson(String name, String className, double attack, double health, double initiative, double powers1, double powers2) {
         //Write JSON file
-        try (FileWriter file = new FileWriter("./data/" + name + ".json")) {
+        try (FileWriter file = new FileWriter("./data/characters/" + name + ".json")) {
+            
+            if(powers1 != 0.0){
+                if(powers2 != 0.0){
+                    file.write("[\"" + name + "\", \"" + className + "\", \"" + attack + "\", \"" + health + "\", \"" + initiative + "\", \"" + powers1 + "\", \"" + powers2 + "\"]");
+                } else {
+                    file.write("[\"" + name + "\", \"" + className + "\", \"" + attack + "\", \"" + health + "\", \"" + initiative + "\", \"" + powers1 + "\"]");
+                }
+            } else {
+                file.write("[\"" + name + "\", \"" + className + "\", \"" + attack + "\", \"" + health + "\", \"" + initiative + "\"]");
+            }
 
-            file.write("{\"" + name + "\": []}"); 
+            file.write("[]"); 
             file.flush();
 
             return true;
@@ -82,7 +92,7 @@ public class GlobalFunctions {
         Play play = new Play();
         Characters characters = new Characters();
         
-        showTitle("TerminalCombat");
+        showTitle("Terminal%20Combat");
 
         String[] menuArray = {"Jouer", "Caractères", "Quitter"};
 

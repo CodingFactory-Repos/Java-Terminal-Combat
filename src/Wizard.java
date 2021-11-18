@@ -1,13 +1,13 @@
 class Wizard {
 
-    private String name = "Wizard";
+    private String name;
     private double health;
     private double attack;
     private double magic;
     private double attack_magic;
     private double initiative;
 
-    public Wizard(String name, double attack, double health, double initiative) {
+    public Wizard(String name, double attack, double health, double initiative, double magic, double attack_magic) {
         this.name = name;
         this.attack = attack;
         this.health = health;
@@ -59,12 +59,12 @@ class Wizard {
     public void setMagic(double magic) {
         this.magic = magic;
     }
-    void decreaseMagic(int increament) {
+
+    public void decreaseMagic() {
         magic = magic / 2;
     }
 
-    void AttackMagic(){
-
+    public void AttackMagic(){
         attack_magic = magic + attack;
     }
 

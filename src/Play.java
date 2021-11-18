@@ -1,5 +1,3 @@
-
-
 public class Play extends GlobalFunctions {
     public void main() {
         // Initialize
@@ -11,8 +9,8 @@ public class Play extends GlobalFunctions {
         showTitle("Play");
 
         // Initialize
-        Player player1 = new Player("Axel ", 30.0, 300.0, 35);
-        Player player2 = new Player("Louis", 30, 150.0, 60);
+        Warrior player1 = new Warrior("Axel ", 120, 300.0, 1, 20);
+        Wizard player2 = new Wizard("Louis", 35 , 100, 4);
 
         double playerTurns;
 
@@ -29,19 +27,19 @@ public class Play extends GlobalFunctions {
                 turns = false;
                 System.out.println("Le combat est terminé en " + playerTurns + " tours, " + player1.getName() + " est a " + player1.getHealth() + " et le " + player2.getName() + " est a " + player2.getHealth());
 
-                // player1.getHealth() <= 0 ? System.out.println(player1.getName()+" est mort, donc il est perdant") : System.out.println(player1.getName()+" est vivant, donc il est gagnant");
-                // player2.getHealth() <= 0 ? System.out.println(player2.getName()+" est mort, donc il est perdant") : System.out.println(player2.getName()+" est vivant, donc il est gagnant");
+                //player1.getHealth() <= 0 ? System.out.println(player1.getName()+" est mort, donc il est perdant") : System.out.println(player1.getName()+" est vivant, donc il est gagnant");
+               // player2.getHealth() <= 0 ? System.out.println(player2.getName()+" est mort, donc il est perdant") : System.out.println(player2.getName()+" est vivant, donc il est gagnant");
             } else {
                 if (Math.floor(playerTurns / 2) == (playerTurns / 2)) {
                     player2.damage(player1.getAttack());
-                    System.out.println(" le " + player1.getName() + " reçois l'attaque de " + player2.getName());
+                    System.out.println(player2.getName() + " reçois l'attaque de " + player1.getName());
                     System.out.println("-" + player2.getAttack());
-                    System.out.println("la vie de " + player2.getName() + " est de " + player2.getHealth());
+                    System.out.println("La vie de " + player2.getName() + " est de " + player2.getHealth());
                 } else {
                     player1.damage(player2.getAttack());
-                    System.out.println("la vie de " + player1.getName() + " est de " + player1.getHealth());
-                    System.out.println(player2.getName() + " reçois l'attaque de " + player1.getName());
+                    System.out.println(player1.getName() + " reçois l'attaque de " + player2.getName());
                     System.out.println("-" + player1.getAttack());
+                    System.out.println("la vie de " + player1.getName() + " est de " + player1.getHealth());
                 }
 
                 playerTurns++;

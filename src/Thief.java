@@ -13,6 +13,27 @@ class Thief {
         this.dodge = dodge;
     }
 
+    @Override
+    public String toString() {
+        return "Thief{" +
+                "name='" + name + '\'' +
+                ", health=" + health +
+                ", attack=" + attack +
+                ", critical=" + critical +
+                ", dodge=" + dodge +
+                '}';
+    }
+
+    public String toString(int toStringV2) {
+        return "Thief{" +
+                "name='" + name + '\'' +
+                ", health=" + health +
+                ", attack=" + attack +
+                ", critical=" + critical +
+                ", dodge=" + dodge +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

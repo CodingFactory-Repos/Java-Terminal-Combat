@@ -15,6 +15,25 @@ class Warrior {
         this.setHealth(this.getHealth() - (nbDamage - getShield()));
     }
 
+    @Override
+    public String toString() {
+        return "Warrior{" +
+                "name='" + name + '\'' +
+                ", health=" + health +
+                ", attack=" + attack +
+                ", shield=" + shield +
+                '}';
+    }
+
+    public String toString(int toStringV2) {
+        return "Warrior{" +
+                "name='" + name + '\'' +
+                ", health=" + health +
+                ", attack=" + attack +
+                ", shield=" + shield +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

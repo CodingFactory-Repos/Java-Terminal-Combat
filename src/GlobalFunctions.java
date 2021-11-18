@@ -21,8 +21,6 @@ public class GlobalFunctions {
     }
 
     public static String callJson(String name) {
-        System.out.print("\033[H\033[2J");
-
         try {
             FileReader fis = new FileReader("./data/characters/" + name + ".json");
 
@@ -69,6 +67,16 @@ public class GlobalFunctions {
             return aList;
         } else {
             return null;
+        }
+    }
+
+    public static boolean deleteJson(String name) {
+        File file = new File("./data/characters/" + name + ".json");
+        
+        if(file.delete()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

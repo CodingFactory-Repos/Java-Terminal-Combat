@@ -30,25 +30,53 @@ public class Fights extends GlobalFunctions {
 
                 System.out.println("Le combat est terminé en " + playerTurns + " tours, " + player1.getName() + " est a " + player1.getHealth() + " et le " + player2.getName() + " est a " + player2.getHealth());
 
-                System.out.print("> Retour");
-                scanner.nextLine();
-                scanner.nextLine();
-                showMenu();
-            } else {
-                if (Math.floor(playerTurns / 2) == (playerTurns / 2)) {
-                    player2.damage(player1.getAttack());
+                System.out.println("1: Voir les logs - 2: Retour");
 
-                    
+                System.out.print("> ");
+                scanner.nextLine();
+                
+                switch (scanner.nextLine()) {
+                    case "1":
+                        System.out.println(logs);
+
+                        System.out.println("Appuyez sur enter pour retourner au menu");
+
+                        System.out.print("> ");
+                        scanner.nextLine();
+
+                        showMenu();
+                        break;
+                    case "2":
+                        showMenu();
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                double playerAttack;
+
+                if (Math.floor(playerTurns / 2) == (playerTurns / 2)) {
+                    playerAttack = player1.getAttack();
+
+                    player2.damage(playerAttack);
 
                     if(player2.getHealth() <= 0){
                         player2.setHealth(0);
                     }
+
+                    logs += "[Player 1 turn] " + player2.getName() + " 🥊 " + player1.getName() + " (-" + playerAttack + ")\n";
+                    logs += "[Player 1 turn] ♥ " + player2.getName() + ": " + player2.getHealth() + "\n\n";
                 } else {
-                    player1.damage(player2.getAttack());
+                    playerAttack = player2.getAttack();
+
+                    player1.damage(playerAttack);
 
                     if(player1.getHealth() <= 0){
                         player1.setHealth(0);
                     }
+
+                    logs += "[Player 2 turn] " + player1.getName() + " 🥊 " + player2.getName() + " (-" + playerAttack + ")\n";
+                    logs += "[Player 2 turn] ♥ " + player1.getName() + ": " + player1.getHealth() + "\n\n";
                 }
 
                 playerTurns++;

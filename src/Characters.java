@@ -172,6 +172,12 @@ public class Characters extends GlobalFunctions {
             System.out.print("> ");
 
             createJson(name, className, attack, health, initiative, scanner.nextDouble());
+        } else if(className == "Voleurs"){
+            showTitle("Le%20vol");
+            System.out.println("Quel est le niveau d'esquive de votre personnage ?");
+            System.out.print("> ");
+            
+            createJson(name, className, attack, health, initiative, scanner.nextDouble());
         } else {
             createJson(name, className, attack, health, initiative, 0.0);
         }

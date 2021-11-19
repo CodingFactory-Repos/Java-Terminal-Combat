@@ -1,3 +1,5 @@
+import java.util.Random;
+
 class Player {
     private String name;
     private String classes;
@@ -5,6 +7,7 @@ class Player {
     private double attack;
     private double initiative;
     private double power;
+    private boolean thiefSettings = true;
 
     public Player(String name, String classes, double attack, double health, double initiative, double power) {
         this.name = name;
@@ -16,8 +19,14 @@ class Player {
     }
 
     public void damage(double damage) {
-        if(getClassName().equals("Warrior")){
+        if (getClassName().equals("Guerrier")) {
             this.health -= (damage - this.power);
+        } else if (getClassName().equals("Voleurs")) {
+            if ((new Random().nextInt((int) this.power) + 1) == 1) {
+                this.health = (this.health - 0);
+            } else {
+                this.health -= damage;
+            }
         } else {
             this.health -= damage;
         }
@@ -36,14 +45,18 @@ class Player {
     }
 
     public double getAttack() {
-        System.out.println(getClassName());
-
-        if(getClassName().equals("Magicien")){
-            System.out.println("Magicien Selected");
+        if (getClassName().equals("Magicien")) {
             this.power = this.power / 2;
             return attack + this.power;
+        } else if (getClassName().equals("Voleurs")) {
+            if ((new Random().nextDouble((int) this.power) + 1) == 1 && thiefSettings) {
+                this.thiefSettings = false;
+                return (attack * 2);
+            } else {
+                this.thiefSettings = true;
+                return attack;
+            }
         } else {
-            System.out.println("Personne normale");
             return attack;
         }
     }

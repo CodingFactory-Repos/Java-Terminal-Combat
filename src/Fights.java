@@ -1,7 +1,7 @@
 public class Fights extends GlobalFunctions {
     public Fights(String[] playerData1, String[] playerData2) {
         // Initialize
-        showTitle("Play");
+        showTitle("Chargement");
 
         // Prepare Fight
         Player player1 = new Player(playerData1[0], playerData1[1], Double.parseDouble(playerData1[2]), Double.parseDouble(playerData1[3]), Double.parseDouble(playerData1[4]), Double.parseDouble(playerData1[5]));

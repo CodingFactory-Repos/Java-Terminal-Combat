@@ -21,7 +21,7 @@ public class Characters extends GlobalFunctions {
             returnId++;
         }
 
-        System.out.println(" - " + returnId + " Retour");
+        System.out.println(" - " + returnId + ": Retour");
         System.out.println("Quel personnage voulez-vous sélectionner ?");
         System.out.print("> ");
 

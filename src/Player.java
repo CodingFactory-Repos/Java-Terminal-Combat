@@ -49,7 +49,7 @@ class Player {
             this.power = this.power / 2;
             return attack + this.power;
         } else if (getClassName().equals("Voleurs")) {
-            if ((new Random().nextDouble((int) this.power) + 1) == 1 && thiefSettings) {
+            if ((new Random().nextInt((int) this.power) + 1) == 1 && thiefSettings) {
                 this.thiefSettings = false;
                 return (attack * 2);
             } else {

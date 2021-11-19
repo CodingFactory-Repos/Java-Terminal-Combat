@@ -1,46 +1,36 @@
 import java.util.*;
 
-public class Characters extends GlobalFunctions {
+public class Characters extends GlobalFunctions {    
     public void main() {
-        // if(callJson() == null) {
-        // System.out.println("Un fichier characters.json a été crée");
-        // createJson("characters");
-        // } else {
-        // System.out.println("Le fichier characters.json existe déjà");
-        // }
-
-        if (listJson() == null) {
-            System.out.println("Aucun personnage n'a été crée");
+        if (listJson().size() == 0) {
+            charactersCreate(null);
         } else {
             charactersList();
         }
     }
 
     public void charactersList() {
-        // Initialize
-        Scanner scanner = new Scanner(System.in);
+        int returnId = 1;
 
-        int createId = 1;
-
-        showTitle("Mes%20Caracteres");
+        showTitle("Mes%20Personnage");
 
         System.out.println("Voici la liste de tous les personnages :");
-        System.out.print("0: Retour");
+        System.out.print("0: Créer un Personnage");
         for (int i = 0; i < listJson().size(); i++) {
             System.out.print(" - " + (i + 1) + ": " + listJson().get(i));
-            createId++;
+            returnId++;
         }
 
-        System.out.println(" - " + createId + " Créer un caractère");
+        System.out.println(" - " + returnId + " Retour");
         System.out.println("Quel personnage voulez-vous sélectionner ?");
         System.out.print("> ");
 
         int choice = scanner.nextInt();
 
         if (choice == 0) {
-            showMenu();
-        } else if(createId == choice) {
             charactersCreate(null);
+        } else if(returnId == choice) {
+            showMenu();
         } else {
             if ((choice - 1) < listJson().size()) {
                 characterSelected((String) listJson().get(choice - 1));
@@ -51,8 +41,7 @@ public class Characters extends GlobalFunctions {
     }
 
     public void characterSelected(String name) {
-        // Initialize
-        Scanner scanner = new Scanner(System.in);
+
 
         showTitle(name);
 
@@ -64,9 +53,10 @@ public class Characters extends GlobalFunctions {
 
         System.out.println("");
 
-        System.out.println("Sa puissance d'attaque est de " + stats[0]);
-        System.out.println("Sa vie est de " + stats[1]);
-        System.out.println("Son initiative est de " + stats[2] + "\n");
+        System.out.println("Il appartient a la classe de " + stats[0]);
+        System.out.println("Sa puissance d'attaque est de " + stats[1]);
+        System.out.println("Sa vie est de " + stats[2]);
+        System.out.println("Son initiative est de " + stats[3] + "\n");
 
         String[] menuArray = { "Modifier", "Supprimer", "Retour" };
 
@@ -94,8 +84,7 @@ public class Characters extends GlobalFunctions {
     }
 
     public void characterModify(String name) {
-        // Initialize
-        Scanner scanner = new Scanner(System.in);
+
 
         showTitle("Modifier%20" + name);
 
@@ -121,24 +110,24 @@ public class Characters extends GlobalFunctions {
     }
 
     private void charactersCreate(String defineName) {
-        // Initialize
-        Scanner scanner = new Scanner(System.in);
-
         String name;
         String className;
         Double attack;
         double health;
         double initiative;
 
-        if (defineName != null) {
-            name = defineName;
-        } else {
+        System.out.println(defineName);
+
+        if (defineName == null) {
             showTitle("Créer%20un%20personnage");
 
             System.out.println("Quel est le nom de votre personnage ?");
             System.out.print("> ");
 
+            scanner.nextLine();
             name = scanner.nextLine();
+        } else {
+            name = defineName;
         }
 
         showTitle("Classes");
@@ -176,31 +165,22 @@ public class Characters extends GlobalFunctions {
             System.out.println("Quel est la puissance de protection du bouclier ?");
             System.out.print("> ");
 
-            createJson(name, className, attack, health, initiative, scanner.nextDouble(), 0.0);
+            createJson(name, className, attack, health, initiative, scanner.nextDouble());
         } else if(className == "Magicien"){
             showTitle("La%20Magie");
             System.out.println("Quel est le niveau de la magie de votre personnage ?");
             System.out.print("> ");
 
-            double magic = scanner.nextDouble();
-
-            showTitle("L'attaque%20de%20la%20magie");
-            System.out.println("Quel est le niveau de l'attaque de la magie de votre personnage ?");
-            System.out.print("> ");
-
-            double attack_magic = scanner.nextDouble();
-
-            createJson(name, className, attack, health, initiative, magic, attack_magic);
+            createJson(name, className, attack, health, initiative, scanner.nextDouble());
         } else {
-            createJson(name, className, attack, health, initiative, 0.0, 0.0);
+            createJson(name, className, attack, health, initiative, 0.0);
         }
 
         charactersList();
     }
 
     public void charactersDelete(String name) {
-        // Initialize
-        Scanner scanner = new Scanner(System.in);
+
 
         showTitle("Supprimer%20" + name);
 

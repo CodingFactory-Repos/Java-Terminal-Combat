@@ -1,78 +1,74 @@
 public class Play extends GlobalFunctions {
+    private String[] player1;
+    private String[] player2;
+
     public void main() {
-        // Initialize
-        // Scanner scanner = new Scanner(System.in);
+        if (listJson().size() < 2) {
+            showTitle("Aie");
+            System.out.println("Vous n'avez pas encore assez de personnages. Créons-en un !");
+            System.out.println("");
+            System.out.print("> Ok");
 
-        // Object[] player1Datas = playersSelector(1);
-        // Object[] player2Datas = playersSelector(2);
+            scanner.nextLine();
+            scanner.nextLine();
 
-        showTitle("Play");
-
-        // Initialize
-        Player player1 = new Player("Axel ", 120, 300.0, 9);
-        Player player2 = new Player("Louis", 35 , 100, 4);
-
-        double playerTurns;
-
-        if(player1.getInitiative() > player2.getInitiative()){
-            playerTurns = 0;
+            showMenu();
         } else {
-            playerTurns = 1;
-        }
-
-        boolean turns = true;
-
-        while(turns) {
-            if (player1.getHealth() <= 0 || player2.getHealth() <= 0) {
-                turns = false;
-                System.out.println("Le combat est terminé en " + playerTurns + " tours, " + player1.getName() + " est a " + player1.getHealth() + " et le " + player2.getName() + " est a " + player2.getHealth());
-
-                //player1.getHealth() <= 0 ? System.out.println(player1.getName()+" est mort, donc il est perdant") : System.out.println(player1.getName()+" est vivant, donc il est gagnant");
-               // player2.getHealth() <= 0 ? System.out.println(player2.getName()+" est mort, donc il est perdant") : System.out.println(player2.getName()+" est vivant, donc il est gagnant");
-            } else {
-                if (Math.floor(playerTurns / 2) == (playerTurns / 2)) {
-                    player2.damage(player1.getAttack());
-                    System.out.println(player2.getName() + " reçois l'attaque de " + player1.getName());
-                    System.out.println("-" + player2.getAttack());
-                    System.out.println("La vie de " + player2.getName() + " est de " + player2.getHealth());
-                } else {
-                    player1.damage(player2.getAttack());
-                    System.out.println(player1.getName() + " reçois l'attaque de " + player2.getName());
-                    System.out.println("-" + player1.getAttack());
-                    System.out.println("la vie de " + player1.getName() + " est de " + player1.getHealth());
-                }
-
-                playerTurns++;
-            }
+            fightPreparation();
         }
     }
 
-    
+    public void fightPreparation() {
+        int returnId = 1;
 
-    // public String[] playersSelector(int playerNumber) {
-    //     String[] player = new String[4];
-    //     Scanner scanner = new Scanner(System.in);
+        for (int i = 1; i <= 2; i++) {
+            showTitle("Jouer");
 
-    //     showTitle();
-    //     System.out.println("Quel est le nom du joueur " + playerNumber + " ?");
-    //     System.out.print("> ");
-    //     player[0] = scanner.nextLine();
+            System.out.println("Choisissez votre personnage numero " + i);
+            System.out.println("");
 
-    //     showTitle();
-    //     System.out.println("Quel est l'attaque du joueur " + playerNumber + " ?");
-    //     System.out.print("> ");
-    //     player[1] = scanner.nextLine();
+            for (int j = 0; j < listJson().size(); j++) {
+                if (j == 0) {
+                    System.out.print((j + 1) + ": " + listJson().get(j));
+                } else {
+                    System.out.print(" - " + (j + 1) + ": " + listJson().get(j));
+                }
+                returnId++;
+            }
 
-    //     showTitle();
-    //     System.out.println("Quel est la santé du joueur " + playerNumber + " ?");
-    //     System.out.print("> ");
-    //     player[2] = scanner.nextLine();
+            System.out.println(" - " + returnId + " Retour\n");
+            System.out.print("> ");
 
-    //     showTitle();
-    //     System.out.println("Quel est l'initiative du joueur " + playerNumber + " ?");
-    //     System.out.print("> ");
-    //     player[3] = scanner.nextLine();
+            int choice = scanner.nextInt();
 
-    //     return player;
-    // }
+            if (returnId == choice) {
+                showMenu();
+            } else {
+                if ((choice - 1) < listJson().size()) {
+                    setPlayer(i, (String) listJson().get(choice - 1));
+                } else {
+                    System.out.println("Vous avez sélectionné un personnage inexistant");
+                }
+            }
+        }
+
+        System.out.println("Les joueurs sont configurés ! " + player1[0] + " et " + player2[0]);
+
+        new Fights(player1, player2);
+    }
+
+    public void setPlayer (int position, String information) {
+
+        String temp = callJson(information);
+        temp = temp.replace("[", "").replace("]", "");
+        String[] stats = temp.split(", ");
+
+        if(position == 1) {
+            this.player1 = stats;
+        } else if(position == 2) {
+            this.player2 = stats;
+        }
+
+        return;
+    }
 }

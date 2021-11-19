@@ -4,6 +4,8 @@ import java.net.http.*;
 import java.util.*;
 
 public class GlobalFunctions {
+    static Scanner scanner = new Scanner(System.in);
+
     public static void showTitle(String text) {
         System.out.print("\033[H\033[2J");
 
@@ -38,21 +40,16 @@ public class GlobalFunctions {
         }
     }
 
-    public static boolean createJson(String name, String className, double attack, double health, double initiative, double powers1, double powers2) {
+    public static boolean createJson(String name, String className, double attack, double health, double initiative, double powers) {
         //Write JSON file
         try (FileWriter file = new FileWriter("./data/characters/" + name + ".json")) {
             
-            if(powers1 != 0.0){
-                if(powers2 != 0.0){
-                    file.write("[\"" + name + "\", \"" + className + "\", \"" + attack + "\", \"" + health + "\", \"" + initiative + "\", \"" + powers1 + "\", \"" + powers2 + "\"]");
-                } else {
-                    file.write("[\"" + name + "\", \"" + className + "\", \"" + attack + "\", \"" + health + "\", \"" + initiative + "\", \"" + powers1 + "\"]");
-                }
+            if(powers != 0.0){
+                file.write("[" + name + ", " + className + ", " + attack + ", " + health + ", " + initiative + ", " + powers + "]");
             } else {
-                file.write("[\"" + name + "\", \"" + className + "\", \"" + attack + "\", \"" + health + "\", \"" + initiative + "\"]");
+                file.write("[" + name + ", " + className + ", " + attack + ", " + health + ", " + initiative + ", 0.0]");
             }
 
-            file.write("[]"); 
             file.flush();
 
             return true;
@@ -87,8 +84,6 @@ public class GlobalFunctions {
     }
 
     public static void showMenu() {
-        // Initialize
-        Scanner scanner = new Scanner(System.in);
         Play play = new Play();
         Characters characters = new Characters();
         

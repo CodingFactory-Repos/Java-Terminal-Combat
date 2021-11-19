@@ -68,7 +68,9 @@ public class GlobalFunctions {
  
         if (liste != null) {         
             for (int i = 0; i < liste.length; i++) {
-                aList.add(liste[i].replace(".json", ""));
+                if(liste[i].endsWith(".json")) {
+                    aList.add(liste[i].replace(".json", ""));
+                }
             }
 
             return aList;

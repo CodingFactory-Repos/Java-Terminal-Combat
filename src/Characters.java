@@ -41,8 +41,6 @@ public class Characters extends GlobalFunctions {
     }
 
     public void characterSelected(String name) {
-
-
         showTitle(name);
 
         System.out.println("Vous avez sélectionné " + name);
@@ -53,10 +51,10 @@ public class Characters extends GlobalFunctions {
 
         System.out.println("");
 
-        System.out.println("Il appartient a la classe de " + stats[0]);
-        System.out.println("Sa puissance d'attaque est de " + stats[1]);
-        System.out.println("Sa vie est de " + stats[2]);
-        System.out.println("Son initiative est de " + stats[3] + "\n");
+        System.out.println("Il appartient a la classe de " + stats[1] + " (puissance de " + stats[5] + ")");
+        System.out.println("Sa puissance d'attaque est de " + stats[2]);
+        System.out.println("Sa vie est de " + stats[3]);
+        System.out.println("Son initiative est de " + stats[4] + "\n");
 
         String[] menuArray = { "Modifier", "Supprimer", "Retour" };
 

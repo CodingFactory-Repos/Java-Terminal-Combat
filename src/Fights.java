@@ -64,7 +64,7 @@ public class Fights extends GlobalFunctions {
                         player2.setHealth(0);
                     }
 
-                    logs += "[Player 1 turn] " + player2.getName() + " 🥊 " + player1.getName() + " (-" + playerAttack + ")\n";
+                    logs += "[Player 1 turn] " + player2.getName() + " 🥊 " + player1.getName() + " (-" + playerAttack + " ♥)\n";
                     logs += "[Player 1 turn] ♥ " + player2.getName() + ": " + player2.getHealth() + "\n\n";
                 } else {
                     playerAttack = player2.getAttack();
@@ -75,7 +75,7 @@ public class Fights extends GlobalFunctions {
                         player1.setHealth(0);
                     }
 
-                    logs += "[Player 2 turn] " + player1.getName() + " 🥊 " + player2.getName() + " (-" + playerAttack + ")\n";
+                    logs += "[Player 2 turn] " + player1.getName() + " 🥊 " + player2.getName() + " (-" + playerAttack + " ♥)\n";
                     logs += "[Player 2 turn] ♥ " + player1.getName() + ": " + player1.getHealth() + "\n\n";
                 }
 

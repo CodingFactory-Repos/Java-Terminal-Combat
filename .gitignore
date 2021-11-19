@@ -7,7 +7,7 @@
 # BlueJ files
 *.ctxt
 
-data/characters/*
+data/characters/*.json
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

@@ -1,16 +1,16 @@
+import java.util.Random;
+
 class Thief {
     private String name;
     private double health;
     private double attack;
-    private double critical;
-    private double dodge;
+    private double initiative;
 
     public Thief(String name, double attack, double health) {
         this.name = name;
         this.attack = attack;
         this.health = health;
-        this.critical = critical;
-        this.dodge = dodge;
+        this.initiative = initiative;
     }
 
     @Override
@@ -19,18 +19,16 @@ class Thief {
                 "name='" + name + '\'' +
                 ", health=" + health +
                 ", attack=" + attack +
-                ", critical=" + critical +
-                ", dodge=" + dodge +
+                ", initiative=" + initiative +
                 '}';
     }
 
-    public String toString(int toStringV2) {
+    public String toString(int tosString2) {
         return "Thief{" +
                 "name='" + name + '\'' +
                 ", health=" + health +
                 ", attack=" + attack +
-                ", critical=" + critical +
-                ", dodge=" + dodge +
+                ", initiative=" + initiative +
                 '}';
     }
 
@@ -39,7 +37,18 @@ class Thief {
     }
 
     public void damage(double damage){
-        this.health -= damage;
+        int min = 1;
+        int max = 10;
+
+        Random random = new Random();
+
+        int a = random.nextInt(max + min) + min;
+        if (a < 5) {
+            this.health -= damage;
+        }
+        else{
+            this.health = 0;
+        }
     }
 
     public void setName(String name){
@@ -55,28 +64,40 @@ class Thief {
     }
 
     public double getAttack () {
-        return attack;
+        int min = 1;
+        int max = 10;
+
+        Random random = new Random();
+
+        int a = random.nextInt(max + min) + min;
+        if (a > 5){
+            return attack * 2;
+        }
+        else {
+            return attack;
+        }
     }
 
-    public void setAttack (double attack) {
-        this.attack = attack;
+    public double getInitiative() {
+        return initiative;
     }
 
-    public double getCritical() {
-        return critical;
+    public void setInitiative(double initiative) {
+        this.initiative = initiative;
     }
 
-    public void setCritical(double critical) {
-        this.critical = critical;
-    }
+    public void Random_dodge() {
+        int min = 1;
+        int max = 10;
 
-    public double getDodge() {
-        return dodge;
-    }
+        Random random = new Random();
 
-    public void setDodge(double dodge) {
-        this.dodge = dodge;
+        int a = random.nextInt(max + min) + min;
+        if (a > 5){
+
+        }
     }
 }
+
 
 
